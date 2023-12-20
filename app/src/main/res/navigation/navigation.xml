@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_home"
+        android:id="@+id/homeFragment"
+        android:name="com.example.spendmoney.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_showHistoryFragment"
+            app:destination="@id/showHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_objSpendFragment"
+            app:destination="@id/objSpendFragment" />
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_obj_spend"
+        android:id="@+id/objSpendFragment"
+        android:name="com.example.spendmoney.ui.objspend.ObjSpendFragment"
+        android:label="ObjSpendFragment" >
+        <action
+            android:id="@+id/action_objSpendFragment_to_inputSpendFragment"
+            app:destination="@id/inputSpendFragment" />
+        <action
+            android:id="@+id/action_objSpendFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_input_spend"
+        android:id="@+id/inputSpendFragment"
+        android:name="com.example.spendmoney.ui.spendInput.InputSpendFragment"
+        android:label="InputSpendFragment" >
+        <action
+            android:id="@+id/action_inputSpendFragment_to_objSpendFragment"
+            app:destination="@id/objSpendFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_show_history"
+        android:id="@+id/showHistoryFragment"
+        android:name="com.example.spendmoney.ui.history.ShowHistoryFragment"
+        android:label="ShowHistoryFragment" >
+        <action
+            android:id="@+id/action_showHistoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
+
