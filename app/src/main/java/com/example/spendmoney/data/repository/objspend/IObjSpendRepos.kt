@@ -9,4 +9,8 @@ interface IObjSpendRepos {
     suspend fun getAllObjSpend(): DataResult<List<ObjSpend>>
     suspend fun getObjSpendById(id: String): DataResult<ObjSpend>
     suspend fun updateMoneyObjSpendById(idObj: String, TienTieu: Double): DataResult<Int>
+    suspend fun getTotalMoney(): DataResult<Double>
+    suspend fun deleteObjSpend(idObj: String): DataResult<Int>
+    suspend fun getTotalMoneyExpense(): DataResult<Double>
+    suspend fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): DataResult<Int>
 }

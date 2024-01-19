@@ -14,4 +14,13 @@ interface HistoryDAO{
 
     @Query("SELECT * FROM ${DataBaseLocal.TABLE_HISTORY}")
     fun getAllHistory(): List<HistorySpend>
+
+    @Query("SELECT SUM(Money) FROM ${DataBaseLocal.TABLE_HISTORY}")
+    fun getTotalMoneyExpense(): Double
+
+    @Query("SELECT * FROM ${DataBaseLocal.TABLE_HISTORY} WHERE SUBSTR(DaySpend, 6, 2) = :month")
+    fun getSpendByMonth(month: String): List<HistorySpend>
+
+    @Query("DELETE FROM ${DataBaseLocal.TABLE_HISTORY} WHERE id =:idHistorySpend")
+    fun deleteHistorySpend(idHistorySpend: String): Int
 }

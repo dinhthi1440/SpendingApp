@@ -13,4 +13,16 @@ class HistorySpendRepos(private val local: IHistorySpendDataSource.Local): BaseR
     override suspend fun getAllHistory(): DataResult<List<HistorySpend>> {
         return getResult { local.getAllHistory() }
     }
+
+    override suspend fun getTotalMoneyExpense(): DataResult<Double> {
+        return getResult { local.getTotalMoneyExpense() }
+    }
+
+    override suspend fun getSpendByMonth(month: String): DataResult<List<HistorySpend>> {
+        return getResult { local.getSpendByMonth(month) }
+    }
+
+    override suspend fun deleteHistorySpend(idHistorySpend: String): DataResult<Int> {
+        return getResult { local.deleteHistorySpend(idHistorySpend) }
+    }
 }

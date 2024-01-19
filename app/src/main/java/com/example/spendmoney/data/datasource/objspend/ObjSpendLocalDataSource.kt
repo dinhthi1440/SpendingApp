@@ -21,4 +21,20 @@ class ObjSpendLocalDataSource(private val dataBaseLocal: DataBaseLocal): IObjSpe
     override suspend fun updateMoneySpend(idObj: String, TienTieu: Double): Int {
         return dataBaseLocal.ObjSpendDao.updateMoneyObjSpendById(idObj, TienTieu)
     }
+
+    override suspend fun getTotalMoney(): Double {
+        return dataBaseLocal.ObjSpendDao.getTotalMoney()
+    }
+
+    override suspend fun deleteObjSpend(idObj: String): Int {
+        return dataBaseLocal.ObjSpendDao.deleteObjSpend(idObj)
+    }
+
+    override suspend fun getTotalMoneyExpense(): Double {
+        return dataBaseLocal.ObjSpendDao.getTotalMoneyExpense()
+    }
+
+    override suspend fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): Int {
+        return dataBaseLocal.ObjSpendDao.refundMoneyObjSpendById(nameObjSpend, TienTieu)
+    }
 }

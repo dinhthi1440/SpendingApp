@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_homeFragment_to_objSpendFragment"
             app:destination="@id/objSpendFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticalExpenseFragment"
+            app:destination="@id/statisticalExpenseFragment" />
     </fragment>
 
     <fragment
@@ -26,18 +32,14 @@
         <action
             android:id="@+id/action_objSpendFragment_to_inputSpendFragment"
             app:destination="@id/inputSpendFragment" />
-        <action
-            android:id="@+id/action_objSpendFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+
     </fragment>
     <fragment
         tools:layout="@layout/fragment_input_spend"
         android:id="@+id/inputSpendFragment"
         android:name="com.example.spendmoney.ui.spendInput.InputSpendFragment"
         android:label="InputSpendFragment" >
-        <action
-            android:id="@+id/action_inputSpendFragment_to_objSpendFragment"
-            app:destination="@id/objSpendFragment" />
+
         <argument
             android:name="id"
             app:argType="string" />
@@ -47,9 +49,42 @@
         android:id="@+id/showHistoryFragment"
         android:name="com.example.spendmoney.ui.history.ShowHistoryFragment"
         android:label="ShowHistoryFragment" >
-        <action
-            android:id="@+id/action_showHistoryFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        tools:layout="@layout/fragment_setting"
+        android:id="@+id/settingFragment"
+        android:name="com.example.spendmoney.ui.setting.SettingFragment"
+        android:label="SettingFragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_managementExpenseFragment"
+            app:destination="@id/managementExpenseFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_organizingExpenseFragment"
+            app:destination="@id/organizingExpenseFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_management_expense"
+        android:id="@+id/managementExpenseFragment"
+        android:name="com.example.spendmoney.ui.managementExpense.ManagementExpenseFragment"
+        android:label="ManagementExpenseFragment" >
+        <action
+            android:id="@+id/action_managementExpenseFragment_to_newObjSpendFragment"
+            app:destination="@id/newObjSpendFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_new_obj_spend"
+        android:id="@+id/newObjSpendFragment"
+        android:name="com.example.spendmoney.ui.newObjSPend.NewObjSpendFragment"
+        android:label="NewObjSpendFragment" />
+    <fragment
+        android:id="@+id/statisticalExpenseFragment"
+        android:name="com.example.spendmoney.ui.statisticalExpense.StatisticalExpenseFragment"
+        android:label="fragment_statistical_expense"
+        tools:layout="@layout/fragment_statistical_expense" />
+    <fragment
+        tools:layout="@layout/fragment_organizing_expense"
+        android:id="@+id/organizingExpenseFragment"
+        android:name="com.example.spendmoney.ui.organizingExpense.OrganizingExpenseFragment"
+        android:label="OrganizingExpenseFragment" />
 </navigation>
 

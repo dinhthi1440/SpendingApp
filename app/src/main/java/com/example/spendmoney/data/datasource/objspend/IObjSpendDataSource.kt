@@ -9,5 +9,9 @@ interface IObjSpendDataSource {
         suspend fun getAllObjSpend(): List<ObjSpend>
         suspend fun getObjSpendById(id: String): ObjSpend
         suspend fun updateMoneySpend(idObj: String, TienTieu: Double): Int
+        suspend fun getTotalMoney(): Double
+        suspend fun deleteObjSpend(idObj: String): Int
+        suspend fun getTotalMoneyExpense(): Double
+        suspend fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): Int
     }
 }

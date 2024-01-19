@@ -15,6 +15,7 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>>(diffUtil: DiffUtil.ItemCal
     private var layoutNoData: View? = null   //View hiển thị khi không có dữ liệu
     private var enableShowNoDataUI = false    //Biến xác định xem có hiển thị hay không
 
+
     //lưu tham chiếu đến recyclerView khi adapter được gắn vào recyclerView
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -35,15 +36,6 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>>(diffUtil: DiffUtil.ItemCal
     //gửi danh sách giá trị mới và xử lý hiển thị layoutNoData khi danh sách rỗng
     override fun submitList(list: List<T>?) {
         super.submitList(list)
-//        if (enableShowNoDataUI) {
-//            if (list == null || list.isEmpty()) {
-//                recyclerView?.hide()
-//                layoutNoData?.show()
-//            } else {
-//                recyclerView?.show()
-//                layoutNoData?.hide()
-//            }
-//        }
     }
 
     //xử lý sự kiện tải thêm khi người dùng cuộn đến cuối danh sách

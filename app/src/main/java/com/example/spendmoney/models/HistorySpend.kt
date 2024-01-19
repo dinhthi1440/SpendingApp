@@ -10,9 +10,9 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = DataBaseLocal.TABLE_HISTORY)
 data class HistorySpend(
     @PrimaryKey
-    val id: Int,
+    val id: String,
     val TypeSpend: String,
-    val Money: String,
+    val Money: Double,
     val DaySpend: String,
     val Img: String,
     val Content: String

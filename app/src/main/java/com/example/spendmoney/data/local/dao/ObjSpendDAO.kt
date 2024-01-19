@@ -20,4 +20,17 @@ interface ObjSpendDAO {
 
     @Query("UPDATE ${DataBaseLocal.TABLE_OBJSPEND} SET MoneyDaTieu = MoneyDaTieu +:TienTieu WHERE id =:idObj")
     fun updateMoneyObjSpendById(idObj: String, TienTieu: Double): Int
+
+    @Query("SELECT SUM(MoneyBanDau) FROM ${DataBaseLocal.TABLE_OBJSPEND}")
+    fun getTotalMoney(): Double
+
+    @Query("SELECT SUM(MoneyDaTieu) FROM ${DataBaseLocal.TABLE_OBJSPEND}")
+    fun getTotalMoneyExpense(): Double
+
+    @Query("DELETE from ${DataBaseLocal.TABLE_OBJSPEND} WHERE id =:idObj")
+    fun deleteObjSpend(idObj: String): Int
+
+    @Query("UPDATE ${DataBaseLocal.TABLE_OBJSPEND} SET MoneyDaTieu = MoneyDaTieu -:TienTieu WHERE NameObjSpend =:nameObjSpend")
+    fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): Int
+
 }

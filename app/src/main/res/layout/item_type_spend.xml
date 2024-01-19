@@ -8,10 +8,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/bg_selected"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginTop="5dp"
-        app:cardCornerRadius="17dp"
+        app:cardCornerRadius="18dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +29,23 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:src="@drawable/house" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/img_delete"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:padding="5dp"
+        android:visibility="invisible"
+        android:src="@drawable/delete_button"
+        app:layout_constraintBottom_toTopOf="@+id/bg_selected"
+        app:layout_constraintEnd_toEndOf="@+id/bg_selected"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/bg_selected"
+        app:layout_constraintTop_toTopOf="@+id/bg_selected"
+        app:layout_constraintVertical_bias="0.83" />
 
     <TextView
         android:id="@+id/txt_name_type_spend"

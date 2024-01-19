@@ -22,4 +22,20 @@ class ObjSpendRepos(private val local: IObjSpendDataSource.Local): BaseReponsito
     override suspend fun updateMoneyObjSpendById(idObj: String, TienTieu: Double): DataResult<Int> {
         return getResult { local.updateMoneySpend(idObj, TienTieu) }
     }
+
+    override suspend fun getTotalMoney(): DataResult<Double> {
+        return getResult { local.getTotalMoney() }
+    }
+
+    override suspend fun deleteObjSpend(idObj: String): DataResult<Int> {
+        return getResult { local.deleteObjSpend(idObj) }
+    }
+
+    override suspend fun getTotalMoneyExpense(): DataResult<Double> {
+        return  getResult { local.getTotalMoneyExpense() }
+    }
+
+    override suspend fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): DataResult<Int> {
+        return getResult { local.refundMoneyObjSpendById(nameObjSpend, TienTieu) }
+    }
 }

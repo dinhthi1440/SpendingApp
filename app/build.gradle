@@ -40,6 +40,7 @@ android {
 
 }
 
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -96,5 +97,8 @@ dependencies {
 
     def lottieVersion = "6.0.1"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //MP Android chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }

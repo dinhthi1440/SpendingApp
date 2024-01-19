@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.example.spendmoney.extension.start
+import java.text.DecimalFormat
 
 abstract class BaseFragment<VB: ViewBinding>(
     private val BindingInflater: (LayoutInflater) -> VB
@@ -15,6 +16,7 @@ abstract class BaseFragment<VB: ViewBinding>(
     private var _binding: VB? = null
     protected val binding get() = _binding as VB
     protected abstract val viewModel: BaseViewModel
+    protected val decimalFormat = DecimalFormat("#,###.###")
     private val dialog by lazy { context?.let { Dialog(it) } }
 
     override fun onCreate(savedInstanceState: Bundle?) {

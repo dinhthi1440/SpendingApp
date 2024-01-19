@@ -53,7 +53,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView7"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
@@ -82,19 +82,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_total_money"
                 app:layout_constraintVertical_bias="0.0" />
+
             <TextView
                 android:id="@+id/txt_total_money"
-                android:layout_width="wrap_content"
+                android:layout_width="63dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:text="800.000đ"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_name_obj_spend"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/img_change_Obj"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/txt_name_obj_spend"
-                app:layout_constraintTop_toTopOf="@+id/txt_name_obj_spend" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_name_obj_spend"
+                app:layout_constraintVertical_bias="0.0" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/img_obj_spend"
                 android:layout_width="70dp"
@@ -115,30 +117,30 @@
 
             <TextView
                 android:id="@+id/txt_name_obj_spend"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:text="Nhà cửa"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/img_obj_spend"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/img_obj_spend"
+                app:layout_constraintEnd_toStartOf="@+id/txt_total_money"
+                app:layout_constraintStart_toStartOf="@+id/txt_money_conlai"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.060000002" />
 
             <TextView
                 android:id="@+id/txt_money_conlai"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:text="Còn lại: 500.000đ"
                 android:textColor="#0BB333"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/img_change_Obj"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/img_obj_spend"
                 app:layout_constraintTop_toBottomOf="@+id/txt_name_obj_spend"
@@ -146,7 +148,7 @@
 
             <TextView
                 android:id="@+id/txt_money_datieu"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Đã tiêu: -300.000đ"
@@ -163,7 +165,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="70dp"
-                android:background="#A5FF9C"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/img_obj_spend"
@@ -222,7 +224,7 @@
             android:layout_height="wrap_content"
             android:hint="Số tiền đã chi (vnđ)"
             android:inputType="number"
-            android:maxLength="12"
+            android:maxLength="15"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -248,11 +250,13 @@
             android:maxLines="3" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
+        android:layout_marginEnd="40dp"
         app:counterMaxLength="100"
         app:hintEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -269,10 +273,20 @@
             android:hint="Ngày phát sinh chi tiêu"
             android:maxLength="100"
             android:maxLines="3" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
+    <ImageView
+        android:id="@+id/img_calendar_date_spend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/calendar"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
+        app:layout_constraintEnd_toEndOf="@+id/cardView7"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName3" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_continue"

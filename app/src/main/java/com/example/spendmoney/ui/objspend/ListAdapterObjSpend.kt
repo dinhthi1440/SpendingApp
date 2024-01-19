@@ -1,6 +1,7 @@
 package com.example.spendmoney.ui.objspend
 
 import android.view.LayoutInflater
+import android.view.View
 import java.text.DecimalFormat
 import android.view.ViewGroup
 import com.example.spendmoney.R
@@ -9,10 +10,16 @@ import com.example.spendmoney.base.BaseViewHolder
 import com.example.spendmoney.databinding.ItemObjectSpendBinding
 import com.example.spendmoney.models.ObjSpend
 
-class ListAdapterObjSpend(private val onClick: (ObjSpend) -> Unit)  : BaseAdapter<ObjSpend, BaseViewHolder<ObjSpend>>(ObjSpend.differUtil) {
+class ListAdapterObjSpend(private val onClick: (ObjSpend) -> Unit,
+                          private val onClickEdit: (ObjSpend) -> Unit,private val isVisibility: Boolean)  : BaseAdapter<ObjSpend, BaseViewHolder<ObjSpend>>(ObjSpend.differUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<ObjSpend> {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemObjectSpendBinding.inflate(inflater, parent, false)
+        if(isVisibility){
+            binding.imgEdit.visibility = View.VISIBLE
+        }else{
+            binding.imgEdit.visibility = View.GONE
+        }
         return ViewHolder(binding)
     }
 
@@ -20,7 +27,6 @@ class ListAdapterObjSpend(private val onClick: (ObjSpend) -> Unit)  : BaseAdapte
             BaseViewHolder<ObjSpend>(binding) {
         override fun binView(item: ObjSpend, isItemSelected: Boolean) {
             super.binView(item, isItemSelected)
-            val decimalFormat = DecimalFormat("#,###.###")
             binding.apply {
                 txtNameObjSpend.text = item.NameObjSpend
                 txtMoneyDatieu.text = "-" + decimalFormat.format(item.MoneyDaTieu) + "đ"
@@ -31,6 +37,9 @@ class ListAdapterObjSpend(private val onClick: (ObjSpend) -> Unit)  : BaseAdapte
                 imgObjSpend.setImageResource(R.drawable.doraemon)
                 root.setOnClickListener {
                     onClick(item)
+                }
+                imgEdit.setOnClickListener {
+                    onClickEdit(item)
                 }
             }
         }
