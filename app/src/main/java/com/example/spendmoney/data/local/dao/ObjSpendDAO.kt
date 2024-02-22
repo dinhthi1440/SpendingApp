@@ -30,7 +30,10 @@ interface ObjSpendDAO {
     @Query("DELETE from ${DataBaseLocal.TABLE_OBJSPEND} WHERE id =:idObj")
     fun deleteObjSpend(idObj: String): Int
 
-    @Query("UPDATE ${DataBaseLocal.TABLE_OBJSPEND} SET MoneyDaTieu = MoneyDaTieu -:TienTieu WHERE NameObjSpend =:nameObjSpend")
-    fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): Int
+    @Query("UPDATE ${DataBaseLocal.TABLE_OBJSPEND} SET MoneyDaTieu = MoneyDaTieu -:TienTieu WHERE id =:idObjSpend")
+    fun refundMoneyObjSpendById(idObjSpend: String, TienTieu: Double): Int
+
+    @Query("UPDATE ${DataBaseLocal.TABLE_OBJSPEND} SET NameObjSpend = :newName, MoneyBanDau = :newMoneyBanDau, ImgObjSpend = :newImgObjSpend WHERE id = :id")
+    fun updateObjSpendById(id: String, newName: String, newMoneyBanDau: Double, newImgObjSpend: Int): Int
 
 }

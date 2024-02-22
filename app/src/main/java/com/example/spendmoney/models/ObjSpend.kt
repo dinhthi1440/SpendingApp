@@ -12,7 +12,7 @@ class ObjSpend(
     val NameObjSpend: String,
     val MoneyBanDau: Double,
     val MoneyDaTieu: Double?,
-    val ImgObjSpend: String,
+    val ImgObjSpend: Int?,
 ){
     val moneyConLai: Double
         get() = MoneyBanDau - MoneyDaTieu!!

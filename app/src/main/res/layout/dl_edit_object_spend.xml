@@ -14,19 +14,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/txt_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Chỉnh sửa"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextNameObj"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            app:counterMaxLength="12"
+            app:counterEnabled="true"
+            app:counterMaxLength="50"
             app:hintEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_edit"
             app:layout_constraintVertical_bias="0.0">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -35,15 +51,15 @@
                 android:layout_height="wrap_content"
                 android:hint="Tên danh mục"
                 android:inputType="text"
-                android:maxLength="12"
-                android:maxLines="1" />
+                android:maxLength="50"
+                android:maxEms="30"
+                android:maxLines="2" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextNumberMoneySpend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:counterMaxLength="12"
             app:hintEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,7 +72,8 @@
                 android:id="@+id/edt_number_money_spend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Số tiền đã tiêu"
+                android:enabled="false"
+                android:hint="Số tiền đã tiêu (VNĐ)"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,8 +82,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:counterMaxLength="12"
+            app:counterMaxLength="15"
             app:hintEnabled="true"
+            app:counterEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/editTextNumberMoneySpend"
             app:layout_constraintStart_toStartOf="@+id/editTextNumberMoneySpend"
@@ -77,9 +95,9 @@
                 android:id="@+id/edt_number_money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Số tiền trong khoản"
+                android:hint="Số tiền trong khoản (VNĐ)"
                 android:inputType="number"
-                android:maxLength="12"
+                android:maxLength="15"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +105,7 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="8dp"
             android:text="Chọn biểu tượng"
             android:textColor="@color/black"
             android:textSize="14dp"
@@ -112,59 +130,41 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7"
             app:layout_constraintVertical_bias="0.0" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <Button
             android:id="@+id/constl_ok"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="16dp"
+            android:text="Lưu"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
             android:background="@drawable/bg_button_corner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintVertical_bias="1.0"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Xong"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <Button
             android:id="@+id/constl_cancel"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="40dp"
             android:layout_marginBottom="16dp"
+            android:text="Thoát"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
             android:background="@drawable/bg_button_corner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thoát"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintVertical_bias="1.0"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

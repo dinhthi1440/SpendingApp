@@ -7,7 +7,7 @@ interface IHistorySpendDataSource {
         suspend fun insertHistory(historySpend: HistorySpend): Long
         suspend fun getAllHistory(): List<HistorySpend>
         suspend fun getTotalMoneyExpense(): Double
-        suspend fun getSpendByMonth(month: String): List<HistorySpend>
+        suspend fun getSpendByMonthYear(month: String, year: String): List<HistorySpend>
         suspend fun deleteHistorySpend(idHistorySpend: String): Int
     }
 

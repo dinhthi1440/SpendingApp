@@ -7,6 +7,6 @@ interface IHistorySpendRepos {
     suspend fun insertHistory(historySpend: HistorySpend): DataResult<Long>
     suspend fun getAllHistory(): DataResult<List<HistorySpend>>
     suspend fun getTotalMoneyExpense(): DataResult<Double>
-    suspend fun getSpendByMonth(month: String): DataResult<List<HistorySpend>>
+    suspend fun getSpendByMonthYear(month: String, year: String): DataResult<List<HistorySpend>>
     suspend fun deleteHistorySpend(idHistorySpend: String): DataResult<Int>
 }

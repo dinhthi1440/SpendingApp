@@ -34,6 +34,7 @@ class ListAdapterHistory (private val onClick: (HistorySpend) -> Unit):BaseAdapt
                 txtDay.text = item.DaySpend
                 txtMoney.text = "-" + decimalFormat.format(item.Money)
                 txtContentSpend.text = item.Content
+                imgObjSpend.setImageResource(item.Img!!)
             }
 
             binding.imgDots.setOnClickListener {

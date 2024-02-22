@@ -32,6 +32,7 @@ class InputSpendViewModel(private val objSpend: IObjSpendRepos,
             },
             onSuccess = {
                 _getObjSpend.value = it
+                getAllObjSpend()
                 Log.e("TAG", "getObjSpendById: Lấy dữ liệu 1 obj thành công", )
             },
             onError = {

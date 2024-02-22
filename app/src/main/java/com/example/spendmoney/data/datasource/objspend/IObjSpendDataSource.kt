@@ -12,6 +12,7 @@ interface IObjSpendDataSource {
         suspend fun getTotalMoney(): Double
         suspend fun deleteObjSpend(idObj: String): Int
         suspend fun getTotalMoneyExpense(): Double
-        suspend fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): Int
+        suspend fun refundMoneyObjSpendById(idObjSpend: String, TienTieu: Double): Int
+        suspend fun updateObjSpendById(id: String, newName: String, newMoneyBanDau: Double, newImgObjSpend: Int): Int
     }
 }

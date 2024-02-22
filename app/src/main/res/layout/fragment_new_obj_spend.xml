@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:hint="Số tiền trong khoản"
             android:inputType="number"
-            android:maxLength="12"
+            android:maxLength="15"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 

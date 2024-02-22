@@ -10,9 +10,9 @@ class StatisticalExpenseViewModel(private val historySpendRepos: IHistorySpendRe
     private val _spendByMonth = MutableLiveData<List<HistorySpend>>()
     val spendByMonth: LiveData<List<HistorySpend>> get() = _spendByMonth
 
-    fun getSpendByDay(month: String) {
+    fun getSpendByDay(month: String, year: String) {
         executeTask(
-            request = {historySpendRepos.getSpendByMonth(month)},
+            request = {historySpendRepos.getSpendByMonthYear(month, year)},
             onSuccess = {
                 _spendByMonth.value = it
             },

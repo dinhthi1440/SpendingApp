@@ -1,6 +1,8 @@
 package com.example.spendmoney.ui.objspend
 
+import android.util.Log
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spendmoney.R
@@ -23,20 +25,21 @@ class ObjSpendFragment : BaseFragment<FragmentObjSpendBinding>(FragmentObjSpendB
     }
 
     override fun initData() {
-
     }
 
     override fun handleEvent() {
         binding.imgBack.setOnClickListener { findNavController().popBackStack() }
+        binding.addNewObjSpend.setOnClickListener { findNavController().navigate(R.id.action_objSpendFragment_to_newObjSpendFragment) }
     }
 
     override fun bindData() {
         binding.ObjSpendAdapter.layoutAnimation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim_right_to_left)
-        binding.ObjSpendAdapter.adapter = objSpendAdapter
         binding.ObjSpendAdapter.layoutManager = LinearLayoutManager(context)
         viewModel.getAllObjSpend()
-        viewModel.getAllObjSpend.observe(viewLifecycleOwner) {
-            objSpendAdapter.submitList(it)
+        viewModel.getAllObjSpend.observe(viewLifecycleOwner) { newList ->
+            objSpendAdapter.submitList(null)
+            objSpendAdapter.submitList(newList)
+            binding.ObjSpendAdapter.adapter = objSpendAdapter
         }
     }
 

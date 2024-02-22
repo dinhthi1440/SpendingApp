@@ -15,6 +15,7 @@ class ListAdapterSpendingManagement(private val onClick: (ObjSpend) -> Unit, pri
     ): BaseViewHolder<ObjSpend> {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemTypeSpendBinding.inflate(inflater, parent, false)
+
         if(isVisibility){
             binding.imgDelete.visibility = View.VISIBLE
         }else{
@@ -30,6 +31,7 @@ class ListAdapterSpendingManagement(private val onClick: (ObjSpend) -> Unit, pri
             super.binView(item, isItemSelected)
             binding.apply {
                 txtNameTypeSpend.text = item.NameObjSpend
+                imgIconTypeSpend.setImageResource(item.ImgObjSpend!!)
                 imgDelete.setOnClickListener {
                     onClick(item)
                 }

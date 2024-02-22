@@ -16,7 +16,6 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>>(diffUtil: DiffUtil.ItemCal
     private var enableShowNoDataUI = false    //Biến xác định xem có hiển thị hay không
 
 
-    //lưu tham chiếu đến recyclerView khi adapter được gắn vào recyclerView
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         this.recyclerView = recyclerView

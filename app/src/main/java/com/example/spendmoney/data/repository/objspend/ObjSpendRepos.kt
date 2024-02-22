@@ -35,7 +35,16 @@ class ObjSpendRepos(private val local: IObjSpendDataSource.Local): BaseReponsito
         return  getResult { local.getTotalMoneyExpense() }
     }
 
-    override suspend fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): DataResult<Int> {
-        return getResult { local.refundMoneyObjSpendById(nameObjSpend, TienTieu) }
+    override suspend fun refundMoneyObjSpendById(idObjSpend: String, TienTieu: Double): DataResult<Int> {
+        return getResult { local.refundMoneyObjSpendById(idObjSpend, TienTieu) }
+    }
+
+    override suspend fun updateObjSpendById(
+        id: String,
+        newName: String,
+        newMoneyBanDau: Double,
+        newImgObjSpend: Int
+    ): DataResult<Int> {
+        return getResult { local.updateObjSpendById(id, newName, newMoneyBanDau, newImgObjSpend) }
     }
 }

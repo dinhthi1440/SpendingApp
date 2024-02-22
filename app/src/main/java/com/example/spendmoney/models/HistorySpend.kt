@@ -11,10 +11,11 @@ import kotlinx.parcelize.Parcelize
 data class HistorySpend(
     @PrimaryKey
     val id: String,
+    val idTypeSpend: String,
     val TypeSpend: String,
     val Money: Double,
     val DaySpend: String,
-    val Img: String,
+    val Img: Int?,
     val Content: String
 ){
     companion object{
