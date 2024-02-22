@@ -12,5 +12,6 @@ interface IObjSpendRepos {
     suspend fun getTotalMoney(): DataResult<Double>
     suspend fun deleteObjSpend(idObj: String): DataResult<Int>
     suspend fun getTotalMoneyExpense(): DataResult<Double>
-    suspend fun refundMoneyObjSpendById(nameObjSpend: String, TienTieu: Double): DataResult<Int>
+    suspend fun refundMoneyObjSpendById(idObjSpend: String, TienTieu: Double): DataResult<Int>
+    suspend fun updateObjSpendById(id: String, newName: String, newMoneyBanDau: Double, newImgObjSpend: Int): DataResult<Int>
 }

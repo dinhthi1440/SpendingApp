@@ -1,5 +1,6 @@
 package com.example.spendmoney.ui.objspend
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import java.text.DecimalFormat
@@ -34,7 +35,7 @@ class ListAdapterObjSpend(private val onClick: (ObjSpend) -> Unit,
                 txtNumberOfProgressObjSpend.text = "${item.numberOfProgress}%"
                 totalMoney.text = decimalFormat.format(item.MoneyBanDau) + "đ"
                 progressObjSpend.progress = item.numberOfProgress.toInt()
-                imgObjSpend.setImageResource(R.drawable.doraemon)
+                imgObjSpend.setImageResource(item.ImgObjSpend!!)
                 root.setOnClickListener {
                     onClick(item)
                 }
@@ -42,6 +43,7 @@ class ListAdapterObjSpend(private val onClick: (ObjSpend) -> Unit,
                     onClickEdit(item)
                 }
             }
+            Log.e("TAG", "binView: Hàn nha tứ", )
         }
     }
 

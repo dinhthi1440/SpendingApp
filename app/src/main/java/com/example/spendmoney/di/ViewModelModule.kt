@@ -13,7 +13,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { ObjSpendViewModel(get()) }
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
     viewModel {InputSpendViewModel(get(), get())}
     viewModel { ShowHistoryViewModel(get(), get()) }
     viewModel { ManagementExpenseViewModel(get()) }

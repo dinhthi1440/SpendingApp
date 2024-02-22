@@ -93,7 +93,7 @@ class ShowHistoryFragment : BaseFragment<FragmentShowHistoryBinding>(FragmentSho
 
     }
     private fun onClick(historySpend: HistorySpend){
-        viewModel.refundMoneyObjSpendById(historySpend.TypeSpend, historySpend.Money)
+        viewModel.refundMoneyObjSpendById(historySpend.idTypeSpend, historySpend.Money)
         viewModel.deleteHistorySpend(historySpend.id)
         val dialog = context?.let { it1 -> Dialog(it1) }
         dialog?.openDlOk()

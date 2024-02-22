@@ -27,7 +27,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         setupWithNavController(binding.navView, navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-
                 else -> {
                     setNavigationVisible()
                 }

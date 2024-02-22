@@ -11,5 +11,6 @@
     <color name="green_bold">#08B833</color>
     <color name="red_bold">#C20000</color>
     <color name="orange_money_spend">#FA7437</color>
-    <color name="item_spending_when_selected">#f7ba1a</color>
+    <color name="item_spending_after_selected">#f7ba1a</color>
+    <color name="item_spending_before_selected">#B7D4F8</color>
 </resources>

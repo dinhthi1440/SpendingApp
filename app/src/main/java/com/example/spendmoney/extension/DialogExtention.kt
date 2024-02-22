@@ -8,22 +8,30 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spendmoney.R
 import com.example.spendmoney.databinding.BottomSheetLayoutBinding
 import com.example.spendmoney.databinding.DlAnimationOkBinding
+import com.example.spendmoney.databinding.DlChangeDateBinding
 import com.example.spendmoney.databinding.DlChooseTypeSortBinding
 import com.example.spendmoney.databinding.DlEditObjectSpendBinding
 import com.example.spendmoney.databinding.DlUpdateNameUserBinding
 import com.example.spendmoney.models.ObjSpend
+import com.example.spendmoney.ui.newObjSPend.ListAdapterImgObjSpend
 import com.example.spendmoney.ui.spend.ListAdapterSpending
+import java.text.DecimalFormat
+import java.text.ParseException
+import java.time.LocalDate
 import java.util.*
 
 fun Dialog.start(stopFlag: Boolean = false) {
@@ -132,9 +140,10 @@ fun Dialog.changeName(userName: String, callback: (String) -> Unit) {
 }
 
 
-fun Dialog.editObjSpend(objSpend: ObjSpend, callback: (ObjSpend) -> Unit) {
+
+fun Dialog.changeDateToSorting(dateTimeCurrent: LocalDate, callback: (LocalDate) -> Unit) {
     val marginY = -100
-    val binding = DlEditObjectSpendBinding.inflate(layoutInflater)
+    val binding = DlChangeDateBinding.inflate(layoutInflater)
     setContentView(binding.root)
     show()
     window?.apply {
@@ -148,23 +157,142 @@ fun Dialog.editObjSpend(objSpend: ObjSpend, callback: (ObjSpend) -> Unit) {
             gravity = Gravity.CENTER
         }
     }
+
+
+    var mothSelect: String = dateTimeCurrent.monthValue.toString()
+    var yearSelect: String = dateTimeCurrent.year.toString()
+    binding.apply {
+        val listMonth = listOf("01", "02", "03", "05", "06", "07", "08", "09", "10", "11", "12" )
+        val listYear = listOf("2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028",
+        "2029", "2030")
+        val adtMonth = ArrayAdapter(context, R.layout.item_simple_spinner, listMonth)
+        spinnerMonth.adapter = adtMonth
+        spinnerMonth.onItemSelectedListener = object :AdapterView.OnItemSelectedListener,
+            AdapterView.OnItemClickListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                mothSelect = listMonth[p2]
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+
+            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {}
+        }
+
+        val adtYear = ArrayAdapter(context, R.layout.item_simple_spinner, listYear)
+        spinnerYear.adapter = adtYear
+        spinnerYear.onItemSelectedListener = object :AdapterView.OnItemSelectedListener,
+            AdapterView.OnItemClickListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                yearSelect = listYear[p2]
+
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {}
+        }
+
+        spinnerMonth.setSelection(listMonth.indexOf(String.format("%02d", dateTimeCurrent.monthValue)))
+        spinnerYear.setSelection(listYear.indexOf(dateTimeCurrent.year.toString()))
+    }
     val dialog = Dialog(context)
-    binding.constlCancel.setOnClickListener { this.dismiss() }
-    binding.constlOk.setOnClickListener {
+    binding.btnOk.setOnClickListener {
         dialog.openDlOk()
         Handler(Looper.getMainLooper()).postDelayed({
+            val dateChoose = LocalDate.of(yearSelect.toInt(),mothSelect.toInt(), 1)
+            callback(dateChoose)
             this.dismiss()
         },1750 )
-        callback(ObjSpend(
-            objSpend.id, binding.edtNameObj.text.toString(),
-            binding.edtNumberMoney.text.toString().toDouble(),
-            objSpend.MoneyDaTieu, ""
-        ))
+
     }
+
+    binding.btnCancel.setOnClickListener {
+        this.dismiss()
+    }
+}
+
+fun addTextWatcher(editText: EditText) {
+    val decimalFormat = DecimalFormat("#,###.######")
+    editText.addTextChangedListener(object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun afterTextChanged(p0: Editable?) {
+            val enteredText = p0.toString()
+            try {
+                val formattedText = decimalFormat.format(decimalFormat.parse(enteredText))
+                if (formattedText != enteredText && formattedText.length <= 15) {
+                    editText.removeTextChangedListener(this)
+                    editText.setText(formattedText)
+                    editText.setSelection(formattedText.length)
+                    editText.addTextChangedListener(this)
+                }
+            } catch (_: ParseException) {
+            }
+        }
+    })
+}
+
+fun Dialog.editObjSpend(objSpend: ObjSpend, callback: (ObjSpend) -> Unit) {
+    val marginY = -100
+    val binding = DlEditObjectSpendBinding.inflate(layoutInflater)
+
+    setContentView(binding.root)
+    show()
+    window?.apply {
+        setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        attributes.apply {
+            y = marginY
+            gravity = Gravity.CENTER
+        }
+    }
+    var imgObjSpendValue = objSpend.ImgObjSpend
+    val listImgObjSpend = mutableListOf(
+        R.drawable.object_spend_1,
+        R.drawable.object_spend_2,
+        R.drawable.object_spend_3,
+        R.drawable.object_spend_4,
+        R.drawable.object_spend_5,
+        R.drawable.object_spend_6,
+        R.drawable.object_spend_7
+    )
+    binding.apply {
+        recycleViewItemObjSpend.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recycleViewItemObjSpend.adapter = ListAdapterImgObjSpend(objSpend.ImgObjSpend!!, listImgObjSpend, onItemClickListener = {
+            imgObjSpendValue = it
+        })
+    }
+    val decimalFormat = DecimalFormat("#,###.###")
+    val dialog = Dialog(context)
+    binding.constlCancel.setOnClickListener { this.dismiss() }
+    binding.recycleViewItemObjSpend.adapter
+    binding.constlOk.setOnClickListener {
+        val moneyRemaining = decimalFormat.parse(binding.edtNumberMoney.text.toString())?.toDouble() ?: 0.0
+        if(moneyRemaining < objSpend.MoneyDaTieu!!){
+            Toast.makeText(context, "Số tiền trong khoản \n phải lớn hơn số tiền đã tiêu", Toast.LENGTH_SHORT).show()
+        }else{
+            dialog.openDlOk()
+            callback(ObjSpend(
+                objSpend.id, binding.edtNameObj.text.toString(),
+                moneyRemaining,
+                objSpend.MoneyDaTieu, imgObjSpendValue
+            ))
+            Handler(Looper.getMainLooper()).postDelayed({
+                this.dismiss()
+            },1750 )
+        }
+    }
+    addTextWatcher(binding.edtNumberMoney)
+    addTextWatcher(binding.edtNumberMoneySpend)
     binding.apply {
         edtNameObj.setText(objSpend.NameObjSpend)
-        edtNumberMoneySpend.setText(objSpend.MoneyDaTieu.toString())
-        edtNumberMoney.setText(objSpend.MoneyBanDau.toString())
+        edtNumberMoneySpend.setText(objSpend.MoneyDaTieu?.toInt().toString())
+        edtNumberMoney.setText(objSpend.MoneyBanDau.toInt().toString())
     }
 
 }

@@ -11,4 +11,10 @@ object Constant{
     const val SHARED_USER_NAME = PROJECT_NAME + "USERNAME"
     const val SHARED_USER_NAME_DEFAULT_FIRST = ""
 
+    const val SHARED_MONEY = PROJECT_NAME + "MONEY"
+    const val SHARED_MONEY_DEFAULT_FIRST = ""
+
+    const val SHARED_URI_AVATAR = PROJECT_NAME + "URI"
+    const val SHARED_URI_AVATAR_DEFAULT_FIRST = ""
+
 }

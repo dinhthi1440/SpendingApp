@@ -26,6 +26,7 @@ class ListAdapterSpending(private val onClick: (ObjSpend) -> Unit) : BaseAdapter
             super.binView(item, isItemSelected)
             binding.apply {
                 txtNameTypeSpend.text = item.NameObjSpend
+                imgIconTypeSpend.setImageResource(item.ImgObjSpend!!)
                 root.setOnClickListener {
                     onClick(item)
                     onItemClick?.invoke(item)

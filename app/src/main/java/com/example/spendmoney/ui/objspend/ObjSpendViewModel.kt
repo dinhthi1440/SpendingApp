@@ -13,17 +13,18 @@ class ObjSpendViewModel(private val objSpendRepos: IObjSpendRepos):BaseViewModel
     val getAllObjSpend: LiveData<List<ObjSpend>> = _getAllObjSpend
 
     fun getAllObjSpend(){
-        Log.e("TAG", "getAllObjSpend: chạy tới viewmodel", )
         executeTask(
             request = {objSpendRepos.getAllObjSpend() },
             onSuccess = {
                 _getAllObjSpend.value = it
                 _messageError.value =  it.toString()
-                Log.e("TAG", "getAllObjSpend: Thânhf công lấy dữ liệu", )
+                Log.e("TAG", "getAllObjSpend 1111: Thành công lấy dữ liệu ${it.get(3).MoneyDaTieu}", )
             },
             onError = {
                 onErrorProcess(it)
             }
         )
+
+
     }
 }

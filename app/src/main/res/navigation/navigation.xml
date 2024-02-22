@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_objSpendFragment_to_inputSpendFragment"
             app:destination="@id/inputSpendFragment" />
+        <action
+            android:id="@+id/action_objSpendFragment_to_newObjSpendFragment"
+            app:destination="@id/newObjSpendFragment" />
 
     </fragment>
     <fragment
