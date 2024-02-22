@@ -1,11 +1,11 @@
 ## SpendingApp ( Project Android )
 ## Tech
-• Architecture: MVVM Clean Architecture && LiveData
-• Dependency Injection: Koin.
-• Navigation: Navigation Component
-• Input & Validate : RxBinding.
-• Local storage : Room Database.
-• Asynchronous programming: RxKotlin, RxAndroid.
+• Architecture: MVVM Clean Architecture && LiveData <br>
+• Dependency Injection: Koin. <br>
+• Navigation: Navigation Component <br>
+• Input & Validate : RxBinding. <br>
+• Local storage : Room Database. <br>
+• Asynchronous programming: RxKotlin, RxAndroid. 
 
 ## On Boarding
 ![z5180872522581_3002da3fdb3f249f5655e3e129166a0c](https://github.com/dinhthi1440/traffic-sign-recognition-Group5/assets/108991843/00edc8fb-4afe-4b3d-a4cc-28df2d90b519)
