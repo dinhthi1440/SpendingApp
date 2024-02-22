@@ -15,5 +15,6 @@
 <div style="display: flex; justify-content: space-between;">
     <img src="https://github.com/dinhthi1440/traffic-sign-recognition-Group5/assets/108991843/1731806e-b386-4a3a-a8db-dab02cb486cf" alt="Hình ảnh 1">
     <img src="https://github.com/dinhthi1440/traffic-sign-recognition-Group5/assets/108991843/0fd0236f-16e9-4ec6-a33c-fdc713e2229a" alt="Hình ảnh 2">
+    <img src="https://github.com/dinhthi1440/traffic-sign-recognition-Group5/assets/108991843/00edc8fb-4afe-4b3d-a4cc-28df2d90b519" alt="Hình ảnh 3">
 </div>
 ## Statistical Expense 
